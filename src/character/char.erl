@@ -8,7 +8,7 @@
 %% API Function Exports
 %% ------------------------------------------------------------------
 
--export([start_link/0, update/3]).
+-export([start_link/1, update/3]).
 
 %% ------------------------------------------------------------------
 %% gen_server Function Exports
@@ -21,8 +21,8 @@
 %% API Function Definitions
 %% ------------------------------------------------------------------
 
-start_link() ->
-    gen_server:start_link(?MODULE, [], []).
+start_link(CharacterStats) ->
+    gen_server:start_link(?MODULE, [CharacterStats], []).
 
 update(Character, Module, Parameters) ->
     gen_server:call(Character, {update, Module, Parameters}).
@@ -31,7 +31,7 @@ update(Character, Module, Parameters) ->
 %% gen_server Function Definitions
 %% ------------------------------------------------------------------
 
-init(CharacterStats) ->
+init([CharacterStats]) ->
     Effects = [],
     % ets:insert()
     TriggeredEffects = [],
