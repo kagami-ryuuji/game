@@ -2,11 +2,13 @@
 -behaviour(gen_server).
 -define(SERVER, ?MODULE).
 
+-include("char.hrl").
+
 %% ------------------------------------------------------------------
 %% API Function Exports
 %% ------------------------------------------------------------------
 
--export([start_link/0]).
+-export([start_link/0, update/3]).
 
 %% ------------------------------------------------------------------
 %% gen_server Function Exports
@@ -20,7 +22,7 @@
 %% ------------------------------------------------------------------
 
 start_link() ->
-    gen_server:start_link({local, ?SERVER}, ?MODULE, [], []).
+    gen_server:start_link(?MODULE, [], []).
 
 update(Character, Module, Parameters) ->
     gen_server:call(Character, {update, Module, Parameters}).
@@ -29,11 +31,24 @@ update(Character, Module, Parameters) ->
 %% gen_server Function Definitions
 %% ------------------------------------------------------------------
 
-init(Args) ->
-    {ok, Args}.
+init(CharacterStats) ->
+    Effects = [],
+    % ets:insert()
+    TriggeredEffects = [],
+    % ets:insert()
+    CharacterData = #char_servers{
+        self = self(),
+        attack = 0,
+        defence = 0,
+        effects = 0,
+        triggered_effects = 0,
+        stats = CharacterStats
+    },
+    {ok, CharacterData}.
 
-handle_call({update, Module, Parameters}, _From, State) ->
-    {reply, ok, State};
+handle_call({update, Module, Parameters}, _From, CharacterData) ->
+    io:format("UPDATE: ~p~n", [CharacterData#char_servers.stats]),
+    {reply, ok, CharacterData};
 
 handle_call(_Request, _From, State) ->
     {reply, ok, State}.
