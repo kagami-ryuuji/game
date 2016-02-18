@@ -1,3 +1,3 @@
 #!/bin/sh
 
-erl -pa ebin/ -pa deps/cowboy/ebin/ -pa deps/ranch/ebin -pa deps/cowlib/ebin
+erl -pa ebin/ -pa deps/cowboy/ebin/ -pa deps/ranch/ebin -pa deps/cowlib/ebin -run gameserver start
