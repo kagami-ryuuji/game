@@ -9,7 +9,11 @@
                   crypto,
                   cowlib,
                   ranch,
-                  cowboy
+                  cowboy,
+                  mad,
+                  sh,
+                  fs,
+                  active
                  ]},
   {mod, { gameserver_app, []}},
   {env, []}
