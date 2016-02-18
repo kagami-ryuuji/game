@@ -11,7 +11,6 @@ websocket_handle({text, Msg}, Req, State) ->
 	{reply, {text, Msg}, Req, State};
 
 websocket_handle({binary, <<131,104,2,100,0,7,99,111,110,116,114,111,108, Msg/binary>>}, Req, Char) ->
-	io:format("~p~n", [binary_to_term(<<131, Msg/binary>>)]),
 	game_char_controller:handle(binary_to_term(<<131, Msg/binary>>), Char),
 	{reply, {text, unicode:characters_to_binary(<<"Контроллер"/utf8>>)}, Req, Char};
 websocket_handle(Data, Req, State) ->
