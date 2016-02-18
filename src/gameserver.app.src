@@ -6,6 +6,9 @@
   {applications, [
                   kernel,
                   stdlib,
+                  crypto,
+                  cowlib,
+                  ranch,
                   cowboy
                  ]},
   {mod, { gameserver_app, []}},

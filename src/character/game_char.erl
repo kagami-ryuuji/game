@@ -1,4 +1,4 @@
--module(char).
+-module(game_char).
 -behaviour(gen_server).
 -define(SERVER, ?MODULE).
 
