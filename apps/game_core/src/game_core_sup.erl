@@ -1,4 +1,4 @@
--module(gameserver_sup).
+-module(game_core_sup).
 
 -behaviour(supervisor).
 
@@ -24,4 +24,3 @@ start_link() ->
 
 init([]) ->
     {ok, { {one_for_one, 5, 10}, []} }.
-

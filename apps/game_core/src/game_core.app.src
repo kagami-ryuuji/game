@@ -1,4 +1,4 @@
-{application, gameserver,
+{application, game_core,
  [
   {description, ""},
   {vsn, "1"},
@@ -15,6 +15,6 @@
                   fs,
                   active
                  ]},
-  {mod, { gameserver_app, []}},
+  {mod, { game_core_app, []}},
   {env, []}
  ]}.

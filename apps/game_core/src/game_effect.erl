@@ -1,0 +1,2 @@
+-module(game_effect).
+-compile(export_all).
