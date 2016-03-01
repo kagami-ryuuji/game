@@ -1,0 +1,7 @@
+{application, game,
+  [{description, "The Game"},
+   {vsn, "2.10"},
+   {registered, []},
+   {applications, [kernel, stdlib, mnesia, cowboy, active]},
+   {mod, { game, []}},
+   {env, []} ]}.
