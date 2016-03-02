@@ -14,7 +14,6 @@ var Bert;
         }
         Decoder.prototype.decode = function () {
             var tag = this.d.getUint8(this.i++);
-            console.log("Tag: " + tag);
             var r;
             switch (tag) {
                 case 97:

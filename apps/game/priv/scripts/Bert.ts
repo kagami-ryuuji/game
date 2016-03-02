@@ -15,7 +15,6 @@ module Bert {
     }
     decode() {
       var tag = this.d.getUint8(this.i++);
-      console.log("Tag: " + tag);
       var r: any;
       switch (tag) {
         case 97: r = this.d.getUint8(this.i++); break;

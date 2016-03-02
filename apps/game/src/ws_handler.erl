@@ -1,4 +1,4 @@
--module(network_handler).
+-module(ws_handler).
 
 -export([init/2]).
 -export([websocket_handle/3]).
@@ -14,7 +14,5 @@ websocket_handle({text, Msg}, Req, State) ->
 websocket_handle(_Data, Req, State) ->
 	{ok, Req, State}.
 
-websocket_info({timeout, _Ref, Msg}, Req, State) ->
-	{reply, {text, Msg}, Req, State};
 websocket_info(_Info, Req, State) ->
 	{ok, Req, State}.

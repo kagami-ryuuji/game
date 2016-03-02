@@ -18,6 +18,7 @@ start(_StartType, _StartArgs) ->
   cowboy:start_http(my_http_listener, 100, [{port, 8080}],
     [{env, [{dispatch, Dispatch}]}]
   ),
+  application:start(mnesia),
   supervisor:start_link({local,game},game,[]).
 
 init([]) ->

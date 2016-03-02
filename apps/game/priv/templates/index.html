@@ -6,15 +6,19 @@
   <title>Game</title>
 </head>
 <body id="body">
-  <script type="text/javascript" src="static/scripts/Utf8.js"></script>
-  <script type="text/javascript" src="static/scripts/Bert.js"></script>
-  <script type="text/javascript" src="static/scripts/Network.js"></script>
+  <script type="text/javascript" src="scripts/Utf8.js"></script>
+  <script type="text/javascript" src="scripts/Bert.js"></script>
+  <script type="text/javascript" src="scripts/Network.js"></script>
+  <script type="text/javascript" src="scripts/LoginHandler.js"></script>
   <script type="text/javascript">
-  var buf = new ArrayBuffer(100);
-  var packet = new Uint8Array(buf);
-  packet.set([131,110,5,0,0,200,23,168,4], 0);
-  var d = new Bert.Decoder(buf);
-  console.log(d.result);
+  function test() {
+    var buf = new ArrayBuffer(100);
+    var packet = new Uint8Array(buf);
+    packet.set([131,110,5,0,0,200,23,168,4], 0);
+    var d = new Bert.Decoder(buf);
+    console.log(d.result);
+  }
+  Network.register(LoginHandler);
   </script>
 </body>
 </html>
