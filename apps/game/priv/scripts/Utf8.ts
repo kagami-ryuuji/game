@@ -9,16 +9,16 @@ module Utf8 {
       while (i < str.length) {
         ch = str.charCodeAt(i++);
         if (ch < 0x80) { buf.push(ch); }
-        else if (0x7f < ch && ch < 0x800) {
+        else if (0x80 <= ch && ch < 0x800) {
           buf.push((ch >>> 6) & 0x1f | 0xc0);
           buf.push(ch & 0x3f | 0x80);
         }
-        else if (0x7ff < ch && ch < 0x110000) {
+        else if (0x800 <= ch && ch < 0x10000) {
           buf.push((ch >>> 12) & 0x0f | 0xf0);
           buf.push((ch >>> 6) & 0x3f | 0x80);
           buf.push(ch & 0x3f | 0x80);
         }
-        else if (0x7fff < ch && ch < 0x10000) {
+        else if (0x10000 <= ch && ch < 0x110000) {
           buf.push((ch >>> 18) & 0x07 | 0xf8);
           buf.push((ch >>> 12) & 0x3f | 0x80);
           buf.push((ch >>> 6) & 0x3f | 0x80);
