@@ -117,12 +117,11 @@ module Bert {
     decodeMap() {
       var arity = this.d.getUint32(this.i);
       this.i += 4;
-      var r: any[] = [];
+      var r: Object = {};
       for (var i = 0; i < arity; i++) {
         var key = this.decode();
         var value = this.decode();
-        var o = {}; o[key] = value;
-        r.push(o);
+        r[key] = value;
       }
       return r;
     }
