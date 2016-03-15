@@ -16,6 +16,9 @@ websocket_handle({text, <<"bert">>}, Req, State) ->
 	{reply, {binary, erlang:term_to_binary({chat, "Announce"})}, Req, State};
 websocket_handle({text, Msg}, Req, State) ->
 	{reply, {text, Msg}, Req, State};
+websocket_handle({binary, Msg}, Req, State) ->
+	io:format("~p~n", [erlang:binary_to_term(Msg)]),
+	{reply, {text, <<"Binary">>}, Req, State};
 websocket_handle(_Data, Req, State) ->
 	{ok, Req, State}.
 

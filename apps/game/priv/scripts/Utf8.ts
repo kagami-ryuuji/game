@@ -1,7 +1,7 @@
 module Utf8 {
   export class Encoder {
     buffer: ArrayBuffer;
-    byteArray: Uint8Array;
+    bytes: Uint8Array;
     constructor(str: string) {
       var i: number = 0;
       var ch: number = 0;
@@ -26,8 +26,8 @@ module Utf8 {
         }
       }
       this.buffer = new ArrayBuffer(buf.length);
-      var d: DataView = new DataView(this.buffer);
-      buf.forEach(function(v, i, a) { d.setUint8(i, v); }, this);
+      this.bytes = new Uint8Array(this.buffer);
+      this.bytes.set(buf, 0);
     }
   }
   export class Decoder {
