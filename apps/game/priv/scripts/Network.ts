@@ -1,7 +1,7 @@
 module Network {
   var socket: WebSocket;
   var handler: any;
-  socket = new WebSocket('ws://localhost:8080/ws');
+  socket = new WebSocket('ws://localhost:8000/ws');
   socket.onopen = function () { console.log('OPEN'); };
   socket.onclose = function () { console.log('CLOSED'); };
   socket.onmessage = function (msg) {
